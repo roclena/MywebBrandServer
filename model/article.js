@@ -16,6 +16,7 @@ Subject:{
 },
 CreateDate:{
     type:Date,
+    default: Date.now,
     require:true
 }
     

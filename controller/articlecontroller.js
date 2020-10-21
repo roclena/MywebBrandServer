@@ -21,7 +21,7 @@ class articlecontroller {
         const newarticle = new article({
             Title: req.body.Title,
             Subject: req.body.Subject,
-            createarticle:new Date()            
+            createdate:Date.now           
         });
               
      try {
@@ -51,7 +51,7 @@ static getArticles(req, res) {
     });
 }
 static getoneArticle(req, res) {
-    article.findOne({ Title: req.body.Title }).exec((err, article) => {
+    article.findOne({Title:req.params}).exec((err, article) => {
 
         if (article) {
             res.status(400).send({ article });
