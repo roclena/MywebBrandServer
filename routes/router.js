@@ -8,6 +8,7 @@ router.get('/api/users', usercontroller.getUser);
 router.post('/api/login',usercontroller.getoneUser);
 //article Routes
 router.post('/api/postarticle',articlecontroller.createarticle);
+router.get('/api/article',articlecontroller.getArticles);
 
  
 export default router;

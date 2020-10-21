@@ -9,13 +9,13 @@ class articlecontroller {
         if (!req.body.Title) {
             return res.status(400).send({
                 status: 400,
-                message: 'Email is title',
+                message: 'Title is required!!',
             });
         }
         if (!req.body.Subject) {
             return res.status(400).send({
                 status: 400,
-                message: 'First Name is subject',
+                message: ' subject is required!!',
             });
         } 
         const newarticle = new article({
@@ -38,6 +38,32 @@ class articlecontroller {
 
 
 }
+static getArticles(req, res) {
+    article.find({}, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send({
+                status: 200,
+                data: result
+            });
+        }
+    });
+}
+static getoneArticle(req, res) {
+    article.findOne({ Title: req.body.Title }).exec((err, article) => {
+
+        if (article) {
+            res.status(400).send({ article });
+            return;
+        } else {
+            res.status(500).send('Article not found');
+            return;
+        }
+    });
+
+}
+
 }
 
 export default articlecontroller;
