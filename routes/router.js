@@ -9,8 +9,9 @@ router.post('/api/login',usercontroller.getoneUser);
 //article Routes
 router.post('/api/postarticle',articlecontroller.createarticle);
 router.get('/api/article',articlecontroller.getArticles);
-router.get('/api/article/:Title',articlecontroller.getArticles);
-router.put('/api/article/:Title',articlecontroller.updatearticle);
+router.get('/api/article/:_id',articlecontroller.getoneArticle);
+router.put('/api/article/:_id',articlecontroller.updatearticle);
+router.delete('/api/article/:_id',articlecontroller.deletearticle);
 
  
 export default router;

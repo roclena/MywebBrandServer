@@ -61,7 +61,8 @@ static getArticles(req, res) {
     });
 }
 static getoneArticle(req, res) {
-    article.findOne({Title:req.params}).exec((err, article) => {
+    const {_id}=req.params;
+    article.findById({_id}).exec((err, article) => {
 
         if (article) {
             res.status(400).send({ article });
@@ -74,19 +75,15 @@ static getoneArticle(req, res) {
 
 }
 static updatearticle(req, res) {
-    article.findOne({Title:req.body.Title}).exec((err, articlee) => {
+    const {_id}=req.params;
+    article.findById({_id}).exec((err, articlee) => {
 
         if (!articlee) {
             res.status(400).send("Article not found");
             return;
-        } else {
-            const newarticle ={
-                Title: req.body.Title,
-                Subject: req.body.Subject                        
-            }
-                  
+        } else {              
          try {
-        const a = article.updateOne({Title: req.body.Title, 
+        const a = articlee.updateOne({Title: req.body.Title, 
                                         Subject: req.body.Subject
                                      },(err) => {
             if (err) throw err;
@@ -94,7 +91,7 @@ static updatearticle(req, res) {
             res.json({
                 status: 201,
                 message: 'Article updated',
-                data: newarticle
+                data: article
             });
         });
     } catch (e) {}
@@ -102,6 +99,30 @@ static updatearticle(req, res) {
         }
     });
     
+}
+static deletearticle(req,res){
+    const{_id}=req.params;
+    article.findById({_id}).exec((err, articlee) => {
+
+        if (!articlee) {
+            res.status(400).send("Article not found");
+            return;
+        } else {              
+         try {
+        const a = articlee.remove((err) => {
+            if (err) throw err;
+    
+            res.json({
+                status: 201,
+                message: 'Article deleted',
+                
+            });
+        });
+    } catch (e) {}
+            
+        }
+    });
+
 }
 
 }
