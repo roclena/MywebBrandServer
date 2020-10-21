@@ -18,23 +18,33 @@ class articlecontroller {
                 message: ' subject is required!!',
             });
         } 
-        const newarticle = new article({
-            Title: req.body.Title,
-            Subject: req.body.Subject,
-            createdate:Date.now           
-        });
-              
-     try {
-    const a = newarticle.save((err) => {
-        if (err) throw err;
+        article.findOne({Title:req.body.Title}).exec((err, articlee) => {
 
-        res.json({
-            status: 201,
-            message: 'New article Posted',
-            data: newarticle
+            if (articlee) {
+                res.status(400).send("Article exist");
+                return;
+            } else {
+                const newarticle = new article({
+                    Title: req.body.Title,
+                    Subject: req.body.Subject,
+                    createdate:Date.now           
+                });
+                      
+             try {
+            const a = newarticle.save((err) => {
+                if (err) throw err;
+        
+                res.json({
+                    status: 201,
+                    message: 'New article Posted',
+                    data: newarticle
+                });
+            });
+        } catch (e) {}
+                
+            }
         });
-    });
-} catch (e) {}
+        
 
 
 }
@@ -62,6 +72,36 @@ static getoneArticle(req, res) {
         }
     });
 
+}
+static updatearticle(req, res) {
+    article.findOne({Title:req.body.Title}).exec((err, articlee) => {
+
+        if (!articlee) {
+            res.status(400).send("Article not found");
+            return;
+        } else {
+            const newarticle ={
+                Title: req.body.Title,
+                Subject: req.body.Subject                        
+            }
+                  
+         try {
+        const a = article.updateOne({Title: req.body.Title, 
+                                        Subject: req.body.Subject
+                                     },(err) => {
+            if (err) throw err;
+    
+            res.json({
+                status: 201,
+                message: 'Article updated',
+                data: newarticle
+            });
+        });
+    } catch (e) {}
+            
+        }
+    });
+    
 }
 
 }

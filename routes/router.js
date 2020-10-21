@@ -10,6 +10,7 @@ router.post('/api/login',usercontroller.getoneUser);
 router.post('/api/postarticle',articlecontroller.createarticle);
 router.get('/api/article',articlecontroller.getArticles);
 router.get('/api/article/:Title',articlecontroller.getArticles);
+router.put('/api/article/:Title',articlecontroller.updatearticle);
 
  
 export default router;
