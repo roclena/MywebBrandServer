@@ -91,7 +91,7 @@ static updatearticle(req, res) {
             res.json({
                 status: 201,
                 message: 'Article updated',
-                data: article
+                data: articlee
             });
         });
     } catch (e) {}
