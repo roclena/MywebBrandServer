@@ -1,7 +1,7 @@
-import express from 'express';
+/*import express from 'express';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import query from '../Model/query';
+import query from '../db/query';
 
 
 class querycontroller {
@@ -141,4 +141,4 @@ static deletequery(req,res){
 
 }
 
-export default querycontroller;
+export default querycontroller;*/

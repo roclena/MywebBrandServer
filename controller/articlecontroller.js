@@ -1,7 +1,7 @@
-import express from 'express';
+/*import express from 'express';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import article from '../Model/article';
+import article from '../db/article';
 
 
 class articlecontroller {
@@ -127,4 +127,4 @@ static deletearticle(req,res){
 
 }
 
-export default articlecontroller;
+export default articlecontroller;*/
