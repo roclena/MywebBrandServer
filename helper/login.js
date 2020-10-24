@@ -1,5 +1,6 @@
 import User from '../services/userservices';
 import pass from './password';
+import jtoken from './Authorization';
 export default class login {
     static async login(binput,password){       
         const user=await User.getemail(binput);
@@ -7,8 +8,8 @@ export default class login {
            const hassp=user.password;     
             const boolPassword = pass.verifypassword(password,hassp);
             if(boolPassword==true){
-                const tokenn=pass.jwtoken(user);
-                return{user,tokenn};
+                const Token=jtoken.jwtoken(user);
+                return Token;
 
               
             }else{

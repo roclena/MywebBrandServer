@@ -10,12 +10,12 @@ export default class UserServices {
         if (typeof data === 'string') {
             user = User.findOne({ email: data });
             if (!user) {
-                
+
             }
             else {
                 return user;
             }
-        
+
+        }
     }
-}
 }

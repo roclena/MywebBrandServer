@@ -16,6 +16,12 @@ email:{
     require:true
     
 },
+Role:{
+    type:String,
+    require:true,
+    default:'user'
+    
+},
 password:{
     type:String,
     require:true  
