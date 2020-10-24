@@ -7,5 +7,8 @@ const router = express.Router();
 
 router.post("/api/signup", val.validateSignup, usercontroller.signup);
 router.post('/api/login', usercontroller.login);
+//articles
 router.post('/api/article', val.postArticleval, articlecontroller.postArticle);
+router.get('/api/article',articlecontroller.articles);
+router.get('/api/article/:_id',articlecontroller.onearticles);
 export default router;

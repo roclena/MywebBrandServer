@@ -11,6 +11,10 @@ const articleModel = new mongoose.Schema({
         type: String,
         require: true
     },
+    comment:{
+        type:String,
+        default:''
+    },
     CreateDate: {
         type: Date,
         default: Date.now,
