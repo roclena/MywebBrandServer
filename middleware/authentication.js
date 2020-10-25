@@ -2,17 +2,34 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const authentication = (req, res, next) => {
-  try {
-    const header = req.headers.authorization;
-    if (!header || header === '') return res.status(401).json({ status: 401, error: 'Authentication failed' });
+export default class jverifytoken {
+  static verijwt(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+      const bearer = bearerHeader.split(' ');
+      const bearertoken = bearer[1];
+      try {
+        jwt.verify(bearertoken, process.env.tokenkey, (err, ttko) => {
+          if (err) {
+            res.json("Invalid token")
+          } else {
+            req.userData = ttko;
+            next();
+          }
+        })
+      } catch (err) {
+        res.json("Invalid token")
+      }
 
-    const token = jwt.verify(header, process.env.ACCESS_TOKEN_SECRET);
-    req.user = token;
-    next();
-  } catch {
-    return res.status(401).json({ status: 401, error: 'Invalid token!' });
+    } else {
+      return res.json({
+        status: 403,
+        message: "Not Allowed Log in first"
+      });
+
+
+
+    }
   }
-};
+}
 
-export default authentication;
