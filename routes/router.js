@@ -1,6 +1,7 @@
 import express from 'express';
 import usercontroller from '../controller/usercontroller';
 import articlecontroller from '../controller/articlecontroller';
+import duplica from '../middleware/duplication';
 import val from '../middleware/validaion';
 import jwtval from '../middleware/authentication';
 import { checkAdmin } from '../middleware/checkadmin';
@@ -14,6 +15,7 @@ const {
     postArticleval,
     validatequery
 } = val
+const {duplisign}=duplica;
 const { verijwt } = jwtval
 const { signup, login, signupAdmin } = usercontroller
 const {
@@ -31,10 +33,10 @@ const {
 
 }=querycontroller
 
-router.post("/api/signup", validateSignup, signup);
-router.post('/api/Admin',validateAdmin,verijwt,checkAdmin,signupAdmin);
+router.post("/api/signup", validateSignup,duplisign, signup);
+router.post('/api/Admin',validateAdmin,verijwt,checkAdmin,duplisign,signupAdmin);
 router.post('/api/login', login);
-//articles
+//articles routes
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
 router.get('/api/article', articles);
 router.get('/api/article/:_id', onearticles);
