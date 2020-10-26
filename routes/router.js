@@ -4,12 +4,14 @@ import articlecontroller from '../controller/articlecontroller';
 import val from '../middleware/validaion';
 import jwtval from '../middleware/authentication';
 import { checkAdmin } from '../middleware/checkadmin';
+import querycontroller from '../controller/querycontrller';
 
 const router = express.Router();
 
 const {
     validateSignup,
-    postArticleval
+    postArticleval,
+    validatequery
 } = val
 const { verijwt } = jwtval
 const { signup, login } = usercontroller
@@ -21,6 +23,13 @@ const {
     onearticles,
     Removearticles,
 } = articlecontroller
+const {
+    query,
+    senquery,
+    onequery,
+    Deletequery
+
+}=querycontroller
 
 router.post("/api/signup", validateSignup, signup);
 router.post('/api/login', login);
@@ -30,5 +39,9 @@ router.get('/api/article', articles);
 router.get('/api/article/:_id', onearticles);
 router.delete('/api/article/:_id', verijwt, checkAdmin, Removearticles);
 router.put('/api/article/:_id', verijwt,updateArticle);
-
+//query routes
+router.get('/api/query',query);
+router.get('/api/query/:_id',verijwt, onequery);
+router.post('/api/query',validatequery,verijwt,senquery);
+router.delete('/api/queru/:_id',verijwt,checkAdmin,Deletequery);
 export default router;

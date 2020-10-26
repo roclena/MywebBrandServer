@@ -1,5 +1,7 @@
 import validee from '../helper/uservalidation';
 import articlevalid from '../helper/articlevalidation'
+import queryvalid from '../helper/queryvalidation';
+
 
 export default class validation {
   static validateSignup(req, res, next) {
@@ -28,6 +30,21 @@ export default class validation {
       Title,
       Subject
 
+    });
+
+    if (validateIb.error) {
+      return res.json({
+        status: 400,
+        message: validateIb.error.details[0].message
+      });
+    }
+    next();
+  };
+  static validatequery(req, res, next) {
+    const { Subject,Mail } = req.body;
+    const validateIb = queryvalid.validate({
+    Subject,
+    Mail
     });
 
     if (validateIb.error) {

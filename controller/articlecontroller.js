@@ -25,7 +25,7 @@ export default class ArticleServices {
     static async onearticles(req, res) {
         const {_id}=req.params;
         const mess="Article not found..!!"
-        const uarticle = await article.getoneArticle({_id},mess);
+        const uarticle = await article.getoneArticle({_id});
         
         return res.json({
             Articles: uarticle
@@ -63,7 +63,7 @@ export default class ArticleServices {
         if(uarticle){
             return res.json({
                 status:301,
-                message:"Article not found"
+                message:"Article Deleted"
             });
         }else{
             res.json({

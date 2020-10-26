@@ -14,11 +14,11 @@ const queryModel=new mongoose.Schema({
         type:String,
         require:true
     },  
-Title:{
+Subject:{
     type:String,
     require:true
 },
-Subject:{
+Mail:{
     type:String,
     require:true    
 },
