@@ -15,7 +15,9 @@ const {
     postArticleval,
     validatequery
 } = val
-const {duplisign}=duplica;
+const {duplisign,
+     articleexist
+    }=duplica;
 const { verijwt } = jwtval
 const { signup, login, signupAdmin } = usercontroller
 const {
@@ -39,12 +41,12 @@ router.post('/api/login', login);
 //articles routes
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
 router.get('/api/article', articles);
-router.get('/api/article/:_id', onearticles);
+router.get('/api/article/:_id', articleexist,onearticles);
 router.delete('/api/article/:_id', verijwt, checkAdmin, Removearticles);
 router.put('/api/article/:_id', verijwt,updateArticle);
 //query routes
 router.get('/api/query',verijwt,checkAdmin,query);
-router.get('/api/query/:_id',verijwt, onequery);
+router.get('/api/query/:_id',verijwt,checkAdmin, onequery);
 router.post('/api/query',validatequery,verijwt,senquery);
-router.delete('/api/queru/:_id',verijwt,checkAdmin,Deletequery);
+router.delete('/api/query/:_id',verijwt,checkAdmin,Deletequery);
 export default router;
