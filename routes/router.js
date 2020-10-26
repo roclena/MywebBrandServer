@@ -9,17 +9,17 @@ import querycontroller from '../controller/querycontrller';
 const router = express.Router();
 
 const {
+    validateAdmin,
     validateSignup,
     postArticleval,
     validatequery
 } = val
 const { verijwt } = jwtval
-const { signup, login } = usercontroller
+const { signup, login, signupAdmin } = usercontroller
 const {
     postArticle,
     articles,
-    updateArticle,
-    commentarticle,
+    updateArticle,   
     onearticles,
     Removearticles,
 } = articlecontroller
@@ -32,6 +32,7 @@ const {
 }=querycontroller
 
 router.post("/api/signup", validateSignup, signup);
+router.post('/api/Admin',validateAdmin,verijwt,checkAdmin,signupAdmin);
 router.post('/api/login', login);
 //articles
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
@@ -40,7 +41,7 @@ router.get('/api/article/:_id', onearticles);
 router.delete('/api/article/:_id', verijwt, checkAdmin, Removearticles);
 router.put('/api/article/:_id', verijwt,updateArticle);
 //query routes
-router.get('/api/query',query);
+router.get('/api/query',verijwt,checkAdmin,query);
 router.get('/api/query/:_id',verijwt, onequery);
 router.post('/api/query',validatequery,verijwt,senquery);
 router.delete('/api/queru/:_id',verijwt,checkAdmin,Deletequery);

@@ -10,6 +10,7 @@ export default class login {
             if(boolPassword==true){
                 const Token=jtoken.jwtoken(user);
                 return Token;
+                
 
               
             }else{

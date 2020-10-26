@@ -10,7 +10,7 @@ export default class UserServices {
         if (typeof data === 'string') {
             user = User.findOne({ email: data });
             if (!user) {
-
+                return user
             }
             else {
                 return user;

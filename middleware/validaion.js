@@ -1,4 +1,5 @@
 import validee from '../helper/uservalidation';
+import validadmin from '../helper/adminvalidation';
 import articlevalid from '../helper/articlevalidation'
 import queryvalid from '../helper/queryvalidation';
 
@@ -12,7 +13,28 @@ export default class validation {
       email,
       password
 
-    });
+    });  
+
+    if (validateIb.error) {
+      return res.json({
+        status: 400,
+        message: validateIb.error.details[0].message
+      });
+    }
+
+    next();
+
+  };
+  static validateAdmin(req, res, next) {
+    const { firstName, lastName, password, email,Role } = req.body;
+    const validateIb = validadmin.validate({
+      firstName,
+      lastName,
+      email,
+      password,
+      Role
+
+    });  
 
     if (validateIb.error) {
       return res.json({
