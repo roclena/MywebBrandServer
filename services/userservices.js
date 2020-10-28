@@ -9,13 +9,7 @@ export default class UserServices {
         let user;
         if (typeof data === 'string') {
             user = User.findOne({ email: data });
-            if (!user) {
-                return user
-            }
-            else {
-                return user;
-            }
-
+            return user;
         }
     }
 }
