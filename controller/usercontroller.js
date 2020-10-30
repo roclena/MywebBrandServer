@@ -8,7 +8,7 @@ export default class UserController {
         inputFormData.password = helper.enclippass(textPassword);
         const user = await User.createUser(inputFormData);
         return res.json({
-            status: 201,
+            status: 200,
             message: "Acount created"
         })
     }
@@ -28,9 +28,10 @@ export default class UserController {
         const binput = req.body.email;
         const password = req.body.password;
         const user = await helperlogin.login(binput, password);
-        return res.json({
-            message: "Log in successfully",
-            Token: user
-        });
+        if(user){
+        return res.status(200).json(user);
+    }else{
+        return res.status(400).json(user);
+    }
     }
 }

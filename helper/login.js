@@ -9,12 +9,14 @@ export default class login {
             const boolPassword = pass.verifypassword(password,hassp);
             if(boolPassword==true){
                 const Token=jtoken.jwtoken(user);
-                return Token;
-                
-
-              
+                return ({           
+                    message: "Login successfully",
+                    Token: user})                
             }else{
-                return "wrong password";
+                return({
+                    status:400,
+                    message:"wrong password"
+                }) ;
             }
         
         }else{

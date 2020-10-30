@@ -1,6 +1,6 @@
 import chai,{expect} from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../app';
+import app from '../../app';
 
 chai.use(chaiHttp);
 chai.should();
@@ -18,4 +18,5 @@ describe('Welcome to backend test',()=>{
                 done();
            });
     });
+
 });
