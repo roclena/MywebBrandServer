@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "15.0.1"
+  },
   "scripts": {
     "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
@@ -31,6 +34,9 @@
     "@babel/node": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
+    "@babel/preset-flow": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
     "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
