@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
-    "build": "rimraf dist/ && babel app/ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rimraf dist/ && babel ../mywebserver/app.js --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "node  -r esm ../mywebserver/app.js",
     "dev": "nodemon --exec babel-node ../mywebserver/app.js"
   },
