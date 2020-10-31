@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "15.0.1"
+  },
   "scripts": {
     "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
