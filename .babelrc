@@ -1,7 +1,10 @@
 {
-    "presets": ["@babel/preset-env",
+    "presets": [
+        "@babel/preset-env"
+    ],
+    "plugin": [
         "@babel/preset-jsx",
         "@babel/preset-flow",
-        "@babel/preset-typescript"   
+        "@babel/preset-typescript"
     ]
 }
