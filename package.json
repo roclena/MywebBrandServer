@@ -7,10 +7,8 @@
     "node": "15.0.1"
   },
   "scripts": {
-    "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "node  -r esm ../mywebserver/app.js",
-    "dev": "nodemon --exec babel-node ../mywebserver/app.js"
+    "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",   
+    "start": "node  -r esm ../mywebserver/app.js"   
   },
   "author": "Ngabonziza Roger Clement",
   "license": "ISC",
@@ -45,4 +43,6 @@
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2"
   }
+  
+  
 }
