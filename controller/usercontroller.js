@@ -7,8 +7,8 @@ export default class UserController {
         const textPassword = inputFormData.password;
         inputFormData.password = helper.enclippass(textPassword);
         const user = await User.createUser(inputFormData);
-        return res.json({
-            status: 200,
+        return res.status(201).json({
+            status: 201,
             message: "Acount created"
         })
     }
@@ -19,19 +19,25 @@ export default class UserController {
         inputFormData.password = helper.enclippass(textPassword);
         inputFormData.Role = "Admin";
         const user = await User.createUser(inputFormData);
-        return res.json({
-            status: 201,
-            message: "Admin Acount created"
-        })
+        if (user) {
+            return res.status(201).json({
+                status: 201,
+                message: "Admin Acount created"
+            })
+        } else {
+            return res.status(400).json({              
+                message: "Admin Acount not created"
+            })
+            }
     }
     static async login(req, res) {
         const binput = req.body.email;
         const password = req.body.password;
         const user = await helperlogin.login(binput, password);
-        if(user){
-        return res.status(200).json(user);
-    }else{
-        return res.status(400).json(user);
-    }
+        if (user) {
+            return res.status(200).json(user);
+        } else {
+            return res.status(400).json(user);
+        }
     }
 }

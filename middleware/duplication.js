@@ -6,7 +6,7 @@ export default class signupcheck {
        const  binput=req.body.email;      
         const user=await User.getemail(binput);
         if(user){ 
-           return res.json("Acount already exist");
+           return res.status(400).json("Acount already exist");
         }else{
             return next();
         }

@@ -6,7 +6,8 @@
   "scripts": {
     "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "nodemon --exec babel-node ../mywebserver/app.js"
+    "start": "node  -r esm ../mywebserver/app.js",
+    "dev": "nodemon --exec babel-node ../mywebserver/app.js"
   },
   "author": "Ngabonziza Roger Clement",
   "license": "ISC",
@@ -15,12 +16,12 @@
     "bcrypt": "^5.0.0",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "joi": "^17.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.9",
     "node": "^15.0.1",
-    "nodemon": "^2.0.5",
     "prettier": "^2.1.2",
     "regenerator-runtime": "^0.13.7"
   },
@@ -34,6 +35,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "mocha": "^8.2.0",
+    "nodemon": "^2.0.6",
     "nyc": "^15.1.0",
     "rimraf": "^3.0.2"
   }

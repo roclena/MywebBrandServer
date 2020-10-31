@@ -16,7 +16,7 @@ export default class validation {
     });  
 
     if (validateIb.error) {
-      return res.json({
+      return res.status(400).json({
         status: 400,
         message: validateIb.error.details[0].message
       });

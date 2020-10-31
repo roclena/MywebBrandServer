@@ -17,7 +17,7 @@ describe('User Test', () => {
       .end((err, res) => {
         if(err)done(err);
         const {message } = res.body;
-        expect(res.status).to.equal(200);        
+        expect(res.status).to.equal(201);        
         expect(message);                  
         done();
       })
@@ -55,7 +55,19 @@ describe('User Test', () => {
       .send(user1wrongcredetianls)
       .end((err, res) => {
         const { token, message } = res.body;
-        expect(res.status).to.equal(200);
+        expect(res.status).to.equal(400);
+        expect(message);
+        done();
+      });
+  });
+  it('Should not allow user to log in with wrong credentials', (done) => {
+    chai
+      .request(app)
+      .post('/api/signup')
+      .send(userEmpty)
+      .end((err, res) => {
+        const { token, message } = res.body;
+        expect(res.status).to.equal(400);
         expect(message);
         done();
       });
