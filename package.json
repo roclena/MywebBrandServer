@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": " mocha './test/controller' -r core-js -r regenerator-runtime -r @babel/register --timeout 20000 --exit  ||true ",
-    "build": "rimraf dist/ && babel ../mywebserver/app.js --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "node  -r esm ../mywebserver/app.js",
     "dev": "nodemon --exec babel-node ../mywebserver/app.js"
   },
@@ -35,7 +35,6 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-flow": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
     "@babel/preset-typescript": "^7.12.1",
     "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
