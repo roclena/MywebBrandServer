@@ -11,7 +11,8 @@ export default class login {
                 const Token=jtoken.jwtoken(user);
                 return {           
                     message: "Login successfully",
-                    Token: Token
+                    Token: Token,
+                    data:user
                 }                
             }else{
                 return "wrong password"
