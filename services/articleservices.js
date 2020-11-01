@@ -10,7 +10,7 @@ export default class articleService {
         const articlee = article.find();
         return articlee;
     }
-    static getoneArticle(data, ems) {
+    static getoneArticle(data) {
         const onearticle = article.findById(data);
         if (onearticle) {
             return onearticle;

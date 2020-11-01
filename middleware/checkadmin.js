@@ -6,7 +6,7 @@ export const checkAdmin = (req, res, next) => {
         } else {
 
             return res.status(403).json({
-                Message: "Unauthorized. The right reserve and Admin only",
+                Message: "Unauthorized. The right reserve for Admin only",
             });
         }
     } else {

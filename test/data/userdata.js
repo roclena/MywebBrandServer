@@ -6,11 +6,11 @@ export default {
       password: 'Password1!'
       
     },
-    user1Login: {
+    userLogin: {
       email: 'fuser12@user.com',
       password: 'Password1!',
     },
-    /*user1LoginFakePassword: {
+    user1LoginFakePassword: {
       email: 'user1@user.com',
       password: 'password1!',
     },
@@ -19,7 +19,7 @@ export default {
       email: 'user1@user.com',
       password: 'Password1!234',
     },
-    user2: {
+   /* user2: {
       name: 'user2',
       email: 'user2@user.com',
       password: 'Password1!',
