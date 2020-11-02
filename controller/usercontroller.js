@@ -43,9 +43,10 @@ export default class UserController {
         }
     }
     static async changepassword(req, res) {
-        let { userData } = req;
+        const user=await User.getemail(req.body.email);
+       
         const password = req.body.password;
-        const hassp = userData.generate.password;     
+        const hassp = user.password;     
         const newpassword = helper.enclippass(req.body.newpassword);
         const boolPassword = pass.verifypassword(password, hassp);
         if (boolPassword == true) {            
@@ -53,8 +54,9 @@ export default class UserController {
             return res.status(200).json("Password Updated successfull");
         } else {
             return res.status(400).json("Invalid  current password");
-        }
+        }   
 
+   
     }
     static async getusers(req,res){
         const users=await User.getuser();
