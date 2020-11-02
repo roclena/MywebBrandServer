@@ -30,6 +30,7 @@ const {
 const {
     query,
     senquery,
+    senqueryform,
     onequery,
     Deletequery
 
@@ -48,6 +49,6 @@ router.put('/api/article/:_id', verijwt,updateArticle);
 router.get('/api/query',verijwt,checkAdmin,query);
 router.get('/api/query/:_id',verijwt,checkAdmin, onequery);
 router.post('/api/query',validatequery,verijwt,senquery);
-router.post('/api/queri',validatequery,senquery);
+router.post('/api/queri',validatequery,senqueryform);
 router.delete('/api/query/:_id',verijwt,checkAdmin,Deletequery);
 export default router;

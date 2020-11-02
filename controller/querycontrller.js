@@ -12,7 +12,17 @@ export default class ArticleServices {
           Mail:inputFormData.Mail
         }
         const sentquery = await query.createquery(sentqueries);
-        return res.json({
+        return res.status(201).json({
+            status: 201,
+            message: "query sent !!!!"            
+        })
+    }
+    static async senqueryform(req, res) {
+        const inputFormData = req.body;
+        let {userData}=req;
+       
+        const sentquery = await query.createquery(inputFormData);
+        return res.status(201).json({
             status: 201,
             message: "query sent !!!!"            
         })
@@ -36,7 +46,7 @@ export default class ArticleServices {
     static async Deletequery(req, res) {
         const {_id}=req.params;
         const dquery= await query.getremovequery({_id});        
-            return res.json({
+            return res.status(301).json({
                 status:301,
                 message:"Query Deleted !!!!"
             });
