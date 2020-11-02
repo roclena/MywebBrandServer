@@ -47,6 +47,6 @@ router.put('/api/article/:_id', verijwt,updateArticle);
 //query routes
 router.get('/api/query',verijwt,checkAdmin,query);
 router.get('/api/query/:_id',verijwt,checkAdmin, onequery);
-router.post('/api/query',validatequery,senquery);
+router.post('/api/query',validatequery,verijwt,senquery);
 router.delete('/api/query/:_id',verijwt,checkAdmin,Deletequery);
 export default router;
