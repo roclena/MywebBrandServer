@@ -10,13 +10,12 @@ const URL = process.env.URL_config;
 const app = express();
 
 app.use(express.json());
-app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 app.use(routes);
 
 app.get('/', (req, res) => {
-
     res.send({ message: "Welcome to my web Brand!!!!!" });
 });
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
