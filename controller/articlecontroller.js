@@ -4,7 +4,7 @@ export default class ArticleServices {
     static async postArticle(req, res) {
         const inputFormData = req.body;
         const particle = await article.createArticle(inputFormData);
-        return res.json({
+        return res.status(201).json({
             status: 201,
             message: "Article Posted"
         })
@@ -16,7 +16,7 @@ export default class ArticleServices {
                 Articles: uarticle
             });
         }else{
-            res.json({
+            res.status(404).json({
                 status:404,
                 message:"Article not found"
             })
@@ -61,12 +61,12 @@ export default class ArticleServices {
         const {_id}=req.params;
         const uarticle = await article.getremove({_id});
         if(uarticle){
-            return res.json({
+            return res.status(301).json({
                 status:301,
                 message:"Article Deleted"
             });
         }else{
-            res.json({
+            res.status(404).json({
                 status:404,
                 message:"Article not found"
             })
@@ -76,7 +76,7 @@ export default class ArticleServices {
         const {_id}=req.params;
         
         const updateart=await article.getupdate({_id});
-        return res.json({
+        return res.status(200).json({
             status:200,
             message:'article updated',
             updateart

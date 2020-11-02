@@ -23,7 +23,7 @@ export default class login {
                return "wrong email";
              
         }
-    }
+    }   
 
     
 }

@@ -12,18 +12,24 @@ const router = express.Router();
 const {
     validateAdmin,
     validateSignup,
+    validateupdatepass,
     postArticleval,
     validatequery
 } = val
-const {duplisign,
-     articleexist
-    }=duplica;
+const { duplisign,
+    articleexist
+} = duplica;
 const { verijwt } = jwtval
-const { signup, login, signupAdmin } = usercontroller
+const { signup,
+    login,
+    signupAdmin,
+    changepassword,
+    getusers
+} = usercontroller
 const {
     postArticle,
     articles,
-    updateArticle,   
+    updateArticle,
     onearticles,
     Removearticles,
 } = articlecontroller
@@ -34,21 +40,23 @@ const {
     onequery,
     Deletequery
 
-}=querycontroller
+} = querycontroller
 
-router.post("/api/signup", validateSignup,duplisign, signup);
-router.post('/api/Admin',validateAdmin,verijwt,checkAdmin,duplisign,signupAdmin);
-router.post('/api/login',login);
+router.post("/api/signup", validateSignup, duplisign, signup);
+router.post('/api/Admin', validateAdmin, verijwt, checkAdmin, duplisign, signupAdmin);
+router.put('/api/user', validateupdatepass, verijwt, changepassword);
+router.post('/api/login', login);
+router.get('/api/users',verijwt,checkAdmin,getusers);
 //articles routes
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
 router.get('/api/article', articles);
-router.get('/api/article/:_id', articleexist,onearticles);
+router.get('/api/article/:_id', articleexist, onearticles);
 router.delete('/api/article/:_id', verijwt, checkAdmin, Removearticles);
-router.put('/api/article/:_id', verijwt,updateArticle);
+router.put('/api/article/:_id', verijwt, updateArticle);
 //query routes
-router.get('/api/query',verijwt,checkAdmin,query);
-router.get('/api/query/:_id',verijwt,checkAdmin, onequery);
-router.post('/api/query',validatequery,verijwt,senquery);
-router.post('/api/queri',validatequery,senqueryform);
-router.delete('/api/query/:_id',verijwt,checkAdmin,Deletequery);
+router.get('/api/query', verijwt, checkAdmin, query);
+router.get('/api/query/:_id', verijwt, checkAdmin, onequery);
+router.post('/api/query', validatequery, verijwt, senquery);
+router.post('/api/queri', validatequery, senqueryform);
+router.delete('/api/query/:_id', verijwt, checkAdmin, Deletequery);
 export default router;

@@ -18,9 +18,7 @@ export default class ArticleServices {
         })
     }
     static async senqueryform(req, res) {
-        const inputFormData = req.body;
-        let {userData}=req;
-       
+        const inputFormData = req.body;       
         const sentquery = await query.createquery(inputFormData);
         return res.status(201).json({
             status: 201,

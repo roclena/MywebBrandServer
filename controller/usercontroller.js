@@ -1,6 +1,7 @@
 import User from '../services/userservices';
 import helper from '../helper/password';
 import helperlogin from '../helper/login';
+import pass from '../helper/password';
 export default class UserController {
     static async signup(req, res) {
         const inputFormData = req.body;
@@ -25,20 +26,38 @@ export default class UserController {
                 message: "Admin Acount created"
             })
         } else {
-            return res.status(400).json({              
+            return res.status(400).json({
                 message: "Admin Acount not created"
             })
-            }
+        }
     }
     static async login(req, res) {
         const binput = req.body.email;
         const password = req.body.password;
         const user = await helperlogin.login(binput, password);
         if (user) {
-            
+
             return res.status(200).json(user);
         } else {
             return res.status(400).json(user);
         }
+    }
+    static async changepassword(req, res) {
+        let { userData } = req;
+        const password = req.body.password;
+        const hassp = userData.generate.password;     
+        const newpassword = helper.enclippass(req.body.newpassword);
+        const boolPassword = pass.verifypassword(password, hassp);
+        if (boolPassword == true) {            
+            const aa = await User.changepass(newpassword);            
+            return res.status(200).json("Password Updated successfull");
+        } else {
+            return res.status(400).json("Invalid  current password");
+        }
+
+    }
+    static async getusers(req,res){
+        const users=await User.getuser();
+        return res.status(200).json(users);
     }
 }

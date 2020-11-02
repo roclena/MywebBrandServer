@@ -12,4 +12,10 @@ export default class UserServices {
             return user;
         }
     }
+    static changepass(data) {
+         return User.updateOne({ password: data });
+    }
+    static getuser(){
+        return User.find();
+    }
 }

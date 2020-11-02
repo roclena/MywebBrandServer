@@ -1,4 +1,5 @@
 import validee from '../helper/uservalidation';
+import upvalide from '../helper/uppass'
 import validadmin from '../helper/adminvalidation';
 import articlevalid from '../helper/articlevalidation'
 import queryvalid from '../helper/queryvalidation';
@@ -12,18 +13,28 @@ export default class validation {
       lastName,
       email,
       password
-
     });  
-
     if (validateIb.error) {
       return res.status(400).json({
         status: 400,
         message: validateIb.error.details[0].message
       });
     }
-
     next();
-
+  };
+  static validateupdatepass(req, res, next) {
+    const {password, newpassword} = req.body;
+    const validateIb = upvalide.validate({      
+      password,
+      newpassword
+    });  
+    if (validateIb.error) {
+      return res.status(400).json({
+        status: 400,
+        message: validateIb.error.details[0].message
+      });
+    }
+    next();
   };
   static validateAdmin(req, res, next) {
     const { firstName, lastName, password, email,Role } = req.body;
