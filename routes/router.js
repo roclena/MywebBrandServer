@@ -52,7 +52,7 @@ router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
 router.get('/api/article', articles);
 router.get('/api/article/:_id', articleexist, onearticles);
 router.delete('/api/article/:_id', verijwt, checkAdmin, Removearticles);
-router.put('/api/article/:_id', verijwt, updateArticle);
+router.patch('/api/article/:_id', verijwt, updateArticle);
 //query routes
 router.get('/api/query', verijwt, checkAdmin, query);
 router.get('/api/query/:_id', verijwt, checkAdmin, onequery);
