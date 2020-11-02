@@ -37,7 +37,7 @@ const {
 
 router.post("/api/signup", validateSignup,duplisign, signup);
 router.post('/api/Admin',validateAdmin,verijwt,checkAdmin,duplisign,signupAdmin);
-router.post('/api/login', login);
+router.post('/api/login',login);
 //articles routes
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
 router.get('/api/article', articles);
@@ -47,6 +47,6 @@ router.put('/api/article/:_id', verijwt,updateArticle);
 //query routes
 router.get('/api/query',verijwt,checkAdmin,query);
 router.get('/api/query/:_id',verijwt,checkAdmin, onequery);
-router.post('/api/query',validatequery,verijwt,senquery);
+router.post('/api/query',validatequery,senquery);
 router.delete('/api/query/:_id',verijwt,checkAdmin,Deletequery);
 export default router;

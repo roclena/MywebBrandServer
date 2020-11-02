@@ -35,6 +35,7 @@ export default class UserController {
         const password = req.body.password;
         const user = await helperlogin.login(binput, password);
         if (user) {
+            
             return res.status(200).json(user);
         } else {
             return res.status(400).json(user);

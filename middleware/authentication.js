@@ -22,7 +22,7 @@ export default class jverifytoken {
       }
 
     } else {
-      return res.json({
+      return res.status(403).json({
         status: 403,
         message: "Not Allowed Log in first"
       });
