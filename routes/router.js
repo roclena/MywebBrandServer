@@ -44,7 +44,7 @@ const {
 
 router.post("/api/signup", validateSignup, duplisign, signup);
 router.post('/api/Admin', validateAdmin, verijwt, checkAdmin, duplisign, signupAdmin);
-router.put('/api/user',  verijwt, changepassword);
+router.put('/api/user',changepassword);
 router.post('/api/login', login);
 router.get('/api/users',verijwt,checkAdmin,getusers);
 //articles routes
