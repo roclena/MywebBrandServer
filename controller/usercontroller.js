@@ -61,9 +61,9 @@ export default class UserController {
         return res.status(200).json(users);
     }
     static async getdelete(req,res){
-        const user=await User.getemail(req.body.email);
-        if(user){
-        const email=req.body.email;
+        const {email}=req.params;
+        const user=await User.getemail(email);
+        if(user){        
         const as=await User.deleteuser(email)
             return res.status(200).json("Account deleted");
             }else{
