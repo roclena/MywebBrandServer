@@ -18,4 +18,7 @@ export default class UserServices {
     static getuser(){
         return User.find();
     }
+    static deleteuser(data){
+        return User.findOneAndDelete({email:data});
+    }
 }

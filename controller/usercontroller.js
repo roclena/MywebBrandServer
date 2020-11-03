@@ -54,12 +54,21 @@ export default class UserController {
             return res.status(200).json("Password Updated successfull");
         } else {
             return res.status(400).json("Invalid  current password");
-        }   
-
-   
+        }     
     }
     static async getusers(req,res){
         const users=await User.getuser();
         return res.status(200).json(users);
+    }
+    static async getdelete(req,res){
+        const user=await User.getemail(req.body.email);
+        if(user){
+        const email=req.body.email;
+        const as=await User.deleteuser(email)
+            return res.status(200).json("Account deleted");
+            }else{
+                return res.status(400).json("Account not found");
+            }
+       
     }
 }

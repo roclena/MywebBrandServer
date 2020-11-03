@@ -1,6 +1,7 @@
 import validee from '../helper/uservalidation';
 import upvalide from '../helper/uppass'
 import validadmin from '../helper/adminvalidation';
+import emailvalide from '../helper/emailvalide';
 import articlevalid from '../helper/articlevalidation'
 import queryvalid from '../helper/queryvalidation';
 
@@ -27,6 +28,19 @@ export default class validation {
     const validateIb = upvalide.validate({      
       password,
       newpassword
+    });  
+    if (validateIb.error) {
+      return res.status(400).json({
+        status: 400,
+        message: validateIb.error.details[0].message
+      });
+    }
+    next();
+  };
+  static validatemaildelete(req, res, next) {
+    const {email} = req.body;
+    const validateIb =emailvalide.validate({      
+      email
     });  
     if (validateIb.error) {
       return res.status(400).json({

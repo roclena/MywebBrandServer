@@ -14,7 +14,8 @@ const {
     validateSignup,
     validateupdatepass,
     postArticleval,
-    validatequery
+    validatequery,
+    validatemaildelete
 } = val
 const { duplisign,
     articleexist
@@ -24,7 +25,8 @@ const { signup,
     login,
     signupAdmin,
     changepassword,
-    getusers
+    getusers,
+    getdelete
 } = usercontroller
 const {
     postArticle,
@@ -46,6 +48,7 @@ router.post("/api/signup", validateSignup, duplisign, signup);
 router.post('/api/Admin', validateAdmin, verijwt, checkAdmin, duplisign, signupAdmin);
 router.put('/api/user', validateupdatepass, verijwt, changepassword);
 router.post('/api/login', login);
+router.delete('/api/user',validatemaildelete,verijwt,checkAdmin, getdelete);
 router.get('/api/users',verijwt,checkAdmin,getusers);
 //articles routes
 router.post('/api/article', postArticleval, verijwt, checkAdmin, postArticle);
