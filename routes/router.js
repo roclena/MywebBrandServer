@@ -46,7 +46,7 @@ const {
 
 router.post("/api/signup", validateSignup, duplisign, signup);
 router.post('/api/Admin', validateAdmin, verijwt, checkAdmin, duplisign, signupAdmin);
-router.put('/api/user', validateupdatepass, verijwt, changepassword);
+router.put('/api/user/:email',  changepassword);
 router.post('/api/login', login);
 router.delete('/api/user/:email', getdelete);
 router.get('/api/users',verijwt,checkAdmin,getusers);

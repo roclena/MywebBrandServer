@@ -43,8 +43,8 @@ export default class UserController {
         }
     }
     static async changepassword(req, res) {
-        const user=await User.getemail(req.body.email);
-       
+        const {email}=req.params;
+        const user=await User.getemail(email);       
         const password = req.body.password;
         const hassp = user.password;     
         const newpassword = helper.enclippass(req.body.newpassword);
