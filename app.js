@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(routes);
 
-app.get('/', (req, res) => {
+app.use((req, res,next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 
     res.send('cors problem fixed:)');
     res.send({ message: "Welcome to my web Brand!!!!!" });
+    next();
 });
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
 const con = mongoose.connection;
